@@ -1,4 +1,3 @@
-
 /**
  *  2.1.1 Fizz Buxx
  *
@@ -22,8 +21,21 @@
  *    ...
  */
 
-function fizzBuzz () {
+function fizzBuzz() {
+  for (let i = 1; i < 101; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log('FizzBuzz');
+    } else if (i % 3 === 0) {
+      console.log('Fuzz');
+    } else if (i % 5 === 0) {
+      console.log('Buzz');
+    } else {
+      console.log(i);
+    }
+  }
 }
+
+fizzBuzz();
 
 /**
  *  2.1.2 配列の合計
@@ -37,9 +49,17 @@ function fizzBuzz () {
  *
  */
 
+const arr2 = [3, 6, 8, 24, 66, 83, 12, 30, 2];
+let numTotal = 0;
+
 function sum(array) {
-  return
+  array.reduce((total, num) => {
+    return (numTotal = total + num);
+  });
+  return numTotal, console.log(numTotal);
 }
+
+sum(arr2);
 
 /**
  *  2.1.3 配列の最大値と最小値
@@ -53,8 +73,22 @@ function sum(array) {
  *
  */
 
+const arr3 = [2, 100, 18, 24, 66, 83, 80, 30, 6];
+let max = 0;
+let min = 0;
+
 function minMax(array) {
+  array.forEach((num) => {
+    if (num > max) {
+      (max = num), console.log('max', max);
+    }
+    if (num < min) {
+      (min = num), console.log('min', min);
+    }
+  });
 }
+
+minMax(arr3);
 
 /**
  *  2.1.4 文字列の反転
@@ -67,9 +101,14 @@ function minMax(array) {
  *    'fizzbuzz' => 'zzubzzif'
  *
  */
+
 function reverse(str) {
-  return
+  let strArr = str.split('');
+  console.log(strArr);
+  return console.log(strArr.reverse().join(''));
 }
+
+reverse('library');
 
 /**
  *  2.1.5 文字列のローテート
@@ -82,9 +121,38 @@ function reverse(str) {
  *    'library', -1 => 'ibraryl'
  *
  */
+
+// let st rArr5;
+// let chars = '';
+
 function rotate(str, num) {
-  return
+  let chars = '';
+  let strArr5 = str.split('');
+
+  if (num > 0) {
+    for (let i = 0; i < num; i++) {
+      const popped = strArr5.pop();
+      chars += popped;
+    }
+    chars = chars.split('').reverse();
+    strArr5 = chars.concat(strArr5);
+    strArr5 = strArr5.join('');
+
+    return strArr5, console.log(strArr5);
+  } else {
+    for (let i = 0; i > num; i--) {
+      const shifted = strArr5.shift();
+      chars += shifted;
+    }
+    chars = chars.split('');
+    strArr5 = strArr5.concat(chars);
+    strArr5 = strArr5.join('');
+
+    return strArr5, console.log(strArr5);
+  }
 }
+
+rotate('library', -1);
 
 /**
  *  2.1.6 文字列のカウント
@@ -98,8 +166,21 @@ function rotate(str, num) {
  *
  */
 function countStr(s1, s2) {
-  return
+  let count = 0;
+  const str = new RegExp(s2, 'g');
+
+  const matchStr = s1.match(str);
+
+  if (matchStr === 0) {
+    count = 0;
+  } else {
+    count = matchStr.length;
+  }
+
+  return count, console.log(count);
 }
+
+countStr('abcdabeabc', 'abc');
 
 /**
  *  2.1.7 素数
@@ -116,8 +197,14 @@ function countStr(s1, s2) {
  *
  */
 function isPrime(num) {
-  return
+  if (!1 || num / 2 === !1 || num / 3 === !1) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+console.log(isPrime(2));
 
 /**
  *  2.1.8 配列の4と次の数字を抜いた合計
@@ -135,5 +222,17 @@ function isPrime(num) {
  *
  */
 function sumWithout4andNext(array) {
-  return
+  let count = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    count += array[i];
+
+    if (array[i] === 4) {
+      count -= 4;
+      return console.log(count);
+    }
+  }
+  return;
 }
+
+sumWithout4andNext([1, 4, 3, 4, 5]);

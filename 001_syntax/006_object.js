@@ -7,8 +7,17 @@
  *
  */
 
+// const person = {};
+
 function getPersonObject() {
+  return (person = {
+    name: 'Bob',
+    age: 32,
+    gender: 'male',
+  });
 }
+
+console.log(getPersonObject());
 
 /**
  *  6.2 下記データAが引数で与えられた場合にデータBに書き換える関数を実装してください。
@@ -24,8 +33,22 @@ function getPersonObject() {
  *
  */
 
+const person1 = {
+  name: 'Bob',
+  age: 32,
+  gender: 'male',
+};
+
+console.log(person1);
+
 function mutateObject(person) {
+  person['name'] = 'Mary';
+  person['age'] = 37;
+  person['gender'] = 'femail';
+  console.log(person);
 }
+
+mutateObject(person1);
 
 /**
  *  6.3 下記引数で渡される配列にランダムな1 ~10の数字を割り振り、オブジェクトとして返す
@@ -48,8 +71,18 @@ function mutateObject(person) {
  *
  */
 
+const people = ['Bob', 'Mary', 'Ann', 'Mike'];
+const peopleObj = {};
+
 function assignNumber(persons) {
+  persons.forEach((person) => {
+    peopleObj[person] = Math.floor(Math.random() * 10 + 1);
+  });
+
+  console.log(peopleObj);
 }
+
+assignNumber(people);
 
 /**
  *  6.4 配列に重複した要素があれば、true、そうでなければfalseを返す関数を実装してください
@@ -62,5 +95,6 @@ function assignNumber(persons) {
  *
  */
 
-function isDuplicate(array) {
-}
+function isDuplicate(array) {}
+
+isDuplicate([1, 2, 2, 3]);
